@@ -17,3 +17,20 @@ Word.run(function (context) {
         console.log("Debug info: " + JSON.stringify(error.debugInfo));
     }
 });
+
+### body.getRange(rangeLocation: RangeLocation)
+Word.run(function (context) {
+    var body = context.document.body;
+    context.load(body);
+
+    var range = body.getRange("Whole");
+
+    range.select("End");
+            
+}).catch(function (error) {
+    console.log("Error: " + error);
+    if (error instanceof OfficeExtension.Error) {
+       console.log("Debug info: " + JSON.stringify(error.debugInfo));
+       console.log("Trace info: " + JSON.stringify(error.traceMessages));
+    }
+});
